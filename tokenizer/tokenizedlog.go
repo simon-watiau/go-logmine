@@ -3,12 +3,22 @@ package tokenizer
 import (
 	"bytes"
 	"encoding/gob"
+	"fmt"
 	"log"
 	"math"
 )
 
 type TokenizedLog struct {
 	Tokens []Token
+}
+
+func (t TokenizedLog) String() string {
+	str := ""
+	for _, t := range t.Tokens {
+		str += " " + fmt.Sprint(t)
+	}
+
+	return str
 }
 
 func NewTokenizedLogFromBytes(input []byte) (TokenizedLog, error) {
